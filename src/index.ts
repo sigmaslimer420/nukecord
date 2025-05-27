@@ -1,4 +1,3 @@
-
 import { Client, GatewayIntentBits, SlashCommandBuilder, Events } from 'discord.js';
 import * as fs from 'fs';
 import * as dotenv from 'dotenv';
@@ -12,8 +11,8 @@ const colors = {
     YELLOW: chalk.yellow
 };
 
-let premium: number[] = [111111111111111111, 222222222222222222];
-const botadmin: number[] = [1369398821238472788, 222222222222222222];
+let premium: string[] = ["111111111111111111", "222222222222222222"];
+const botadmin: string[] = ["1369398821238472788", "222222222222222222"];
 
 const bot = new Client({
     intents: [
@@ -27,7 +26,7 @@ function load_premium_users(): void {
     try {
         const data = fs.readFileSync("premium_users.json", "utf8");
         const premium_data = JSON.parse(data);
-        premium = premium_data.map((uid: any) => parseInt(uid.toString()));
+        premium = premium_data.map((uid: any) => uid.toString());
     } catch (error) {
         premium = [];
     }
